@@ -122,15 +122,14 @@ class Logger(object):
                     writer.writerow([self.epoch, it] + list(loss.values()))
 
             if hasattr(self, 'iter_visual_fcn') and it % self.iter_visual_freq == 0:
-                pairs, name = self.pair_fcn()             #训练时将这三行注释，并更改下面的num为k    这里新加一句，读取test的文件名
-                regex = re.compile(r'\d+')
-                num = int(max(regex.findall(str(name))))    #这里一共加了三行，首先读取输入test的文件名，然后提取其中的数字，最后将数字作为输出test的名字
-
+#                 pairs, name = self.pair_fcn()             #训练时将这三行注释
+#                 regex = re.compile(r'\d+')
+#                 num = int(max(regex.findall(str(name))))    #
                 for k, v in self.iter_visual_fcn().items():
                     iter_visual_dir = path.join(self.log_dir, self.iter_visual_name)
                     if not path.isdir(iter_visual_dir): os.makedirs(iter_visual_dir)
                     visual_file = path.join(iter_visual_dir,
-                        "{}.png".format(num))
+                        "{}.png".format(k))
                     Image.fromarray(v).convert('L').save(visual_file)
 
             if hasattr(self, 'pair_fcn') and it % self.metrics_freq == self.metrics_freq - 1:
