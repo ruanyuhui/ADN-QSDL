@@ -1,3 +1,4 @@
+The train and test data is placed in the master of this repository
 # ADN: Artifact Disentanglement Network for Unsupervised Metal Artifact Reduction [[Paper]](https://arxiv.org/pdf/1908.01104.pdf)
 
 By [Haofu Liao](http://www.liaohaofu.com) (liaohaofu@gmail.com), Spring, 2019
